@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAEPChef</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="header-user">
+
+            <img id="user-photo" class="user-photo" src="/frontend/assets/imagens_usuarios/saepChef.jpg"
+                alt="Foto de perfil">
+
+            <div class="user-info">
+                <span id="user-name">@SAEPChef</span>
+
+                <button id="profile-btn" class="profile-btn" disabled>
+                    Ver Perfil
+                </button>
+            </div>
+
+        </div>
+
+        <div class="company-name">
+            <h1>SAEPChef</h1>
+        </div>
+
+        <div class="header-login">
+            <button id="login-btn" class="login-btn">
+                Login
+            </button>
+        </div>
+
+    </header>
+
+    <main class="main-content">
+
+        <section class="search-section">
+
+            <div class="search-box">
+
+                <input type="text" id="search-chef" placeholder="Digite o nome do chef... ex: @chef1">
+
+                <button id="search-btn" class="search-btn">
+                    <img src="/frontend/assets/icones/lupa.svg" alt="Pesquisar">
+                </button>
+
+            </div>
+
+            <p id="search-error" class="error-message"></p>
+
+        </section>
+
+        <section class="recipes-section">
+
+            <div id="recipes-container" class="recipes-container">
+
+            </div>
+
+            <p id="recipes-message" class="message"></p>
+
+        </section>
+
+    </main>
+
+    <div id="login-modal" class="modal hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-head">
+
+                <h2>Login</h2>
+
+                <button id="close-login" class="close-btn" aria-label="Fechar">
+                    <img src="/frontend/assets/icones/close.svg" alt="Fechar">
+                </button>
+
+            </div>
+
+            <form id="login-form">
+
+                <label for="login-email">
+                    E-mail
+                </label>
+
+                <input type="email" id="login-email" name="email" placeholder="Digite seu e-mail">
+
+                <span id="email-error" class="error-message"></span>
+
+                <label for="login-password">
+                    Senha
+                </label>
+
+                <input type="password" id="login-password" name="password" placeholder="Digite sua senha">
+
+                <span id="password-error" class="error-message"></span>
+
+                <span id="login-error" class="error-message"></span>
+
+                <div class="modal-actions">
+
+                    <button type="button" id="cancel-login" class="cancel-btn">
+                        Cancelar
+                    </button>
+
+                    <button type="submit" class="login-submit">
+                        Login
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <aside id="profile-menu" class="profile-menu hidden">
+
+        <div class="profile-head">
+
+            <h2>Perfil</h2>
+
+            <button id="close-profile" class="close-btn" aria-label="Fechar">
+                <img src="/frontend/assets/icones/close.svg" alt="Fechar">
+            </button>
+
+        </div>
+
+        <div class="profile-user">
+
+            <img id="profile-photo" class="profile-photo" src="/frontend/assets/imagens_usuarios/chef1.jpg"
+                alt="Foto do usuário">
+
+            <h3 id="profile-name">
+                @SAEPChef
+            </h3>
+
+        </div>
+
+        <div class="profile-stats">
+
+            <div class="stat">
+                <strong id="total-favorites">
+                    0
+                </strong>
+
+                <span>
+                    Favoritos
+                </span>
+            </div>
+
+            <div class="stat">
+                <strong id="total-recipes">
+                    0
+                </strong>
+
+                <span>
+                    Receitas
+                </span>
+            </div>
+
+        </div>
+
+        <button id="my-recipes-btn" class="my-recipes-btn">
+            Suas receitas
+        </button>
+
+        <div id="my-recipes-container" class="my-recipes-container">
+
+        </div>
+
+        <button id="logout-btn" class="logout-btn">
+            Logout
+        </button>
+
+    </aside>
+
+    <section id="recipe-register" class="recipe-register hidden">
+
+        <div class="register-box">
+
+            <div class="register-head">
+
+                <h2>
+                    Cadastro de Receita
+                </h2>
+
+                <button id="close-register" class="close-btn" aria-label="Fechar">
+                    <img src="/frontend/assets/icones/close.svg" alt="Fechar">
+                </button>
+
+            </div>
+
+            <form id="recipe-form">
+
+                <label for="recipe-title">
+                    Título da Receita
+                </label>
+
+                <input type="text" id="recipe-title" name="title" placeholder="Ex.: Risoto de Funghi">
+
+                <span id="title-error" class="error-message"></span>
+
+                <label for="recipe-origin">
+                    Origem da receita
+                </label>
+
+                <input type="text" id="recipe-origin" name="origin" placeholder="Ex.: Itália">
+
+                <span id="origin-error" class="error-message"></span>
+
+                <label for="recipe-image">
+                    Imagem
+                </label>
+
+                <div class="image-upload">
+
+                    <input type="file" id="recipe-image" name="image" accept=".jpg,.jpeg,.png,.gif,.webp">
+
+                    <span id="file-name">
+                        Nenhum arquivo escolhido
+                    </span>
+
+                </div>
+
+                <span id="image-error" class="error-message"></span>
+
+                <button type="submit" class="register-btn">
+                    Cadastrar
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <footer class="footer">
+
+        <div class="footer-company">
+            SAEPChef
+        </div>
+
+        <div class="footer-social">
+
+            <a href="#" aria-label="Instagram">
+                <img src="/frontend/assets/icones/instagram.svg" alt="Instagram">
+            </a>
+
+            <a href="#" aria-label="TikTok">
+                <img src="/frontend/assets/icones/tiktok.svg" alt="TikTok">
+            </a>
+
+            <a href="#" aria-label="LinkedIn">
+                <img src="/frontend/assets/icones/linkedin.svg" alt="LinkedIn">
+            </a>
+
+            <a href="#" aria-label="YouTube">
+                <img src="/frontend/assets/icones/youtube.svg" alt="YouTube">
+            </a>
+
+        </div>
+
+        <div class="footer-copy">
+            Copyright 2026-2027
+        </div>
+
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
